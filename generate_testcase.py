@@ -1,143 +1,175 @@
 import random
 import string
 
+PATH = ".\\input.txt"
 
-def generate(n_begin=1, n_end=30, type_="int", write_to_file=True):
-    """
-    PrintFormat
-    ---------
+
+def __make_int(min_value: int, max_value: int):
+    return random.randint(min_value, max_value)
+
+
+def __make_float(min_value: int, max_value: int):
+    return round(random.uniform(min_value, max_value), 3)
+
+
+def __make_str(min_len: int, max_len: int):
+    str_len = random.randint(min_len, max_len)
+    return random.choices(string.ascii_lowercase, k=str_len)
+
+
+def generate(
+    min_value: int = 1,
+    max_value: int = 15,
+    value_type: str = "int",
+    write_to_file: bool = True,
+):
+    """値Nをランダムで一つ出力する
+
+    出力形式
+
     N
 
-    Parameters
-    ----------
-    n_begin (= 1): int (if type_=="float": int or float)
-        minimum value of n
-        (if type_=="str":n is str_length)
-    n_end (= 30): int (if type_=="float": int or float)
-        maximum value of n
-        (if type_=="str":n is str_length)
-    type_ (="int"): str
-        select type("int","float","str")
-    write_to_file (=True): bool
-        write to input.txt
-    """
-    if type_ == "int":
-        n = random.randint(n_begin, n_end)
-    elif type_ == "float":
-        n = round(random.uniform(n_begin, n_end), 3)
+    生成した値はコンソールへ出力し、
+    write_to_file=Trueの場合、同時にinput.txtも上書きする
 
-    elif type_ == "str":
-        n = "".join(random.choices(string.ascii_letters,
-                                   k=random.randint(n_begin, n_end)))
+    Args:
+        min_value (int, optional): 要素の値の最小値(value_type="str"の場合は文字数). Defaults to 1.
+        max_value (int, optional): 要素の値の最大値(value_type="str"の場合は文字数) Defaults to 30.
+        value_type (str, optional): 要素の型 Defaults to "int".
+        write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
+    """
+    if value_type == "int":
+        n = __make_int(min_value, max_value)
+    elif value_type == "float":
+        n = __make_float(min_value, max_value)
+    elif value_type == "str":
+        n = "".join(__make_str(min_value, max_value))
+    else:
+        print("Type Unknown")
+        return
 
     if write_to_file:
-        path = ".\\input.txt"
-        with open(path, mode="w") as f:
+        with open(PATH, mode="w") as f:
             f.write(str(n))
-    else:
-        print(n)
+    print(n)
 
 
-def generate_list(n_begin=1, n_end=30, a_begin=1, a_end=30, type_="int", write_to_file=True):
-    """
-    PrintFormat
-    ---------
+def generate_list(
+    min_len: int = 1,
+    max_len: int = 15,
+    min_value: int = 1,
+    max_value: int = 30,
+    value_type: str = "int",
+    write_to_file: bool = True,
+):
+    """一次元リストを出力する
+
+    出力形式
+
     N
 
-    A1 A2 ... Ai ... AN
+    a_1 , a_2 , ... , a_n
 
-    Parameters
-    ----------
-    n_begin (= 1): int
-        minimum value of n
-    n_end (= 30): int
-        maximum value of n
-    a_begin (= 1): int (if type_=="float": int or float)
-        minimum value of a
-        (if type_=="str":a is str_length)
-    a_end (= 30): int (if type_=="float": int or float)
-        maximum value of a
-        (if type_=="str":a is str_length)
-    type_ (="int"): str
-        select type("int","float","str")
-    write_to_file (=True): bool
-        write to input.txt
+    生成した値はコンソールへ出力し、
+    write_to_file=Trueの場合、同時にinput.txtも上書きする
+
+    Args:
+        min_len (int, optional): リストの長さの最小値 Defaults to 1.
+        max_len (int, optional): リストの長さの最大値 Defaults to 30.
+        min_value (int, optional): 要素の値の最小値 Defaults to 1.
+        max_value (int, optional): 要素の値の最大値 Defaults to 30.
+        value_type (str, optional): 要素の型 Defaults to "int".
+        write_to_file (bool, optional):ファイルにも出力するか Defaults to True.
     """
-    if type_ == "int":
-        n = random.randint(n_begin, n_end)
-        a = [random.randint(a_begin, a_end) for _ in range(n)]
-    elif type_ == "float":
-        n = random.randint(n_begin, n_end)
-        a = [round((random.uniform(a_begin, a_end)), 3) for _ in range(n)]
-    elif type_ == "str":
-        n = random.randint(n_begin, n_end)
-        a = ["".join(random.choices(string.ascii_letters, k=random.randint(a_begin, a_end)))
-             for _ in range(n)]
+    if value_type == "int":
+        length = random.randint(min_len, max_len)
+        lis = [__make_int(min_value, max_value) for _ in range(length)]
 
-    if write_to_file:
-        path = ".\\input.txt"
-        with open(path, mode="w") as f:
-            f.write(str(n)+"\n")
-        with open(path, mode="a") as f:
-            f.write(" ".join(map(str, a)))
+    elif value_type == "float":
+        length = random.randint(min_len, max_len)
+        lis = [__make_float(min_value, max_value) for _ in range(length)]
+
+    elif value_type == "str":
+        length = random.randint(min_len, max_len)
+        lis = ["".join(__make_str(min_value, max_value)) for _ in range(length)]
 
     else:
-        print(n)
-        print(*a)
+        print("Type Unknown")
+        return
+
+    if write_to_file:
+        with open(PATH, mode="w") as f:
+            f.write(str(length) + "\n")
+        with open(PATH, mode="a") as f:
+            f.write(" ".join(map(str, lis)))
+
+    print(length)
+    print(*lis)
 
 
-def generate_two_dimensional(h_begin=1, h_end=10, w_begin=1, w_end=10, a_begin=1, a_end=30, type_="int", write_to_file=True):
-    """
-    PrintFormat
-    ---------
+def generate_two_dimensional(
+    min_h: int = 1,
+    max_h: int = 10,
+    min_w: int = 1,
+    max_w: int = 10,
+    min_value: int = 1,
+    max_value: int = 15,
+    value_type: str = "int",
+    write_to_file: bool = True,
+):
+    """二次元リストを出力する
+
+    出力形式
+
     H W
 
-    A(1,1) ... A(1,j) ... A(1,w)
+    A_1,1 , A_1,2 , ... , A_1,W
 
-    A(i,1) ... A(i,j) ... A(i,w)
+    A_i,1 , A_i,2 , ... , A_i,W
 
-    A(h,1) ... A(h,j) ... A(h,w)
+    A_H,1 , A_H,2 , ... , A_H,W
 
-    Parameters
-    ----------
-    h_begin,w_bigin (=1,1): int
-        minimum value of h or w:
-    h_end,w_end (=10,10): int
-        maximum value of h or w:
-    a_begin (= 1): int (if type_=="float": int or float)
-        minimum value of a
-        (if type_=="str":a is str_length)
-    a_end (= 30): int (if type_=="float": int or float)
-        maximum value of a
-        (if type_=="str":a is str_length)
-    type_ (="int"): str
-        select type("int","float","str")
-    write_to_file (=True): bool
-        write to input.txt
+    生成した値はコンソールへ出力し、
+    write_to_file=Trueの場合、同時にinput.txtも上書きする
 
+
+    Args:
+        min_h (int, optional): リストの行(縦)の最小値 Defaults to 1.
+        max_h (int, optional): リストの行(縦)の最大値 Defaults to 10.
+        min_w (int, optional): リストの列(横)の最小値 Defaults to 1.
+        max_w (int, optional): リストの列(横)の最大値 Defaults to 10.
+        min_value (int, optional): リストの要素の最小値 Defaults to 1.
+        max_value (int, optional): リストの要素の最大値 Defaults to 30.
+        value_type (str, optional): リストの要素の型 Defaults to "int".
+        write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
-    h = random.randint(h_begin, h_end)
-    w = random.randint(w_begin, w_end)
+    h = random.randint(min_h, max_h)
+    w = random.randint(min_w, max_w)
 
-    if type_ == "int":
-        a = [[random.randint(a_begin, a_end)
-              for _ in range(w)] for _ in range(h)]
-    elif type_ == "float":
-        a = [[round(random.uniform(a_begin, a_end), 3)
-              for _ in range(w)] for _ in range(h)]
-    elif type_ == "str":
-        a = [["".join(random.choices(string.ascii_letters, k=random.randint(a_begin, a_end)))
-              for _ in range(w)] for _ in range(h)]
+    if value_type == "int":
+        a = [[__make_int(min_value, max_value) for _ in range(w)] for _ in range(h)]
+
+    elif value_type == "float":
+        a = [[__make_float(min_value, max_value) for _ in range(w)] for _ in range(h)]
+
+    elif value_type == "str":
+        a = [
+            ["".join(__make_str(min_value, max_value)) for _ in range(w)]
+            for _ in range(h)
+        ]
+
+    else:
+        print("Type Unknown")
+        return
 
     if write_to_file:
-        path = ".\\input.txt"
-        with open(path, mode="w") as f:
-            f.write(str(h)+" "+str(w))
-        with open(path, mode="a") as f:
+        with open(PATH, mode="w") as f:
+            f.write(str(h) + " " + str(w))
+        with open(PATH, mode="a") as f:
             for i in range(h):
                 f.write("\n")
                 f.write(" ".join(map(str, a[i])))
 
-    else:
-        print(h, w)
-        print(*a)
+    print(h, w)
+    for i in a:
+        print(*i)
