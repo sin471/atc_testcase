@@ -1,3 +1,15 @@
+"""競プロのテストケースを生成する
+
+グローバル定数
+PATH
+
+関数
+generate
+generate_list
+generate_two_dimensional
+
+"""
+
 import random
 import string
 
