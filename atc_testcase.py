@@ -4,10 +4,9 @@
 PATH
 
 関数
-generate
-generate_list
-generate_two_dimensional
-
+one_value
+one_dimensional_list
+two_dimensional_list
 """
 
 import random
@@ -29,7 +28,7 @@ def __make_str(min_len: int, max_len: int):
     return random.choices(string.ascii_lowercase, k=str_len)
 
 
-def generate(
+def one_value(
     min_value: int = 1,
     max_value: int = 15,
     value_type: str = "int",
@@ -66,7 +65,7 @@ def generate(
     print(n)
 
 
-def generate_list(
+def one_dimensional_list(
     min_len: int = 1,
     max_len: int = 15,
     min_value: int = 1,
@@ -119,7 +118,7 @@ def generate_list(
     print(*lis)
 
 
-def generate_two_dimensional(
+def two_dimensional_list(
     min_h: int = 1,
     max_h: int = 10,
     min_w: int = 1,
