@@ -30,7 +30,7 @@ def __create_value(min_: int, max_: int, type_: str):
 
 def one_value(
     min_value: int = 1,
-    max_value: int = 15,
+    max_value: int = 8,
     value_type: str = "int",
     write_to_file: bool = True,
 ):
@@ -41,7 +41,7 @@ def one_value(
 
     Args:
         min_value (int, optional): 要素の値の最小値(value_type="str"の場合は文字数). Defaults to 1.
-        max_value (int, optional): 要素の値の最大値(value_type="str"の場合は文字数) Defaults to 30.
+        max_value (int, optional): 要素の値の最大値(value_type="str"の場合は文字数) Defaults to 8.
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
@@ -55,9 +55,9 @@ def one_value(
 
 def one_dimensional_list(
     min_len: int = 1,
-    max_len: int = 15,
+    max_len: int = 8,
     min_value: int = 1,
-    max_value: int = 30,
+    max_value: int = 8,
     value_type: str = "int",
     write_to_file: bool = True,
 ):
@@ -70,9 +70,9 @@ def one_dimensional_list(
 
     Args:
         min_len (int, optional): リストの長さの最小値 Defaults to 1.
-        max_len (int, optional): リストの長さの最大値 Defaults to 30.
+        max_len (int, optional): リストの長さの最大値 Defaults to 8.
         min_value (int, optional): 要素の値の最小値 Defaults to 1.
-        max_value (int, optional): 要素の値の最大値 Defaults to 30.
+        max_value (int, optional): 要素の値の最大値 Defaults to 8.
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional):ファイルにも出力するか Defaults to True.
     """
@@ -91,11 +91,11 @@ def one_dimensional_list(
 
 def two_dimensional_list(
     min_h: int = 1,
-    max_h: int = 10,
+    max_h: int = 8,
     min_w: int = 1,
-    max_w: int = 10,
+    max_w: int = 8,
     min_value: int = 1,
-    max_value: int = 15,
+    max_value: int = 8,
     value_type: str = "int",
     write_to_file: bool = True,
 ):
@@ -112,11 +112,11 @@ def two_dimensional_list(
 
     Args:
         min_h (int, optional): リストの行(縦)の最小値 Defaults to 1.
-        max_h (int, optional): リストの行(縦)の最大値 Defaults to 10.
+        max_h (int, optional): リストの行(縦)の最大値 Defaults to 8.
         min_w (int, optional): リストの列(横)の最小値 Defaults to 1.
-        max_w (int, optional): リストの列(横)の最大値 Defaults to 10.
+        max_w (int, optional): リストの列(横)の最大値 Defaults to 8.
         min_value (int, optional): リストの要素の最小値 Defaults to 1.
-        max_value (int, optional): リストの要素の最大値 Defaults to 30.
+        max_value (int, optional): リストの要素の最大値 Defaults to 8.
         value_type (str, optional): リストの要素の型 Defaults to "int".
         write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
