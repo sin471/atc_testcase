@@ -15,15 +15,15 @@ import string
 PATH = ".\\input.txt"
 
 
-def __make_int(min_value: int, max_value: int):
+def __create_int(min_value: int, max_value: int):
     return random.randint(min_value, max_value)
 
 
-def __make_float(min_value: int, max_value: int):
+def __create_float(min_value: int, max_value: int):
     return round(random.uniform(min_value, max_value), 3)
 
 
-def __make_str(min_len: int, max_len: int):
+def __create_str(min_len: int, max_len: int):
     str_len = random.randint(min_len, max_len)
     return random.choices(string.ascii_lowercase, k=str_len)
 
@@ -50,11 +50,11 @@ def one_value(
         write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
     if value_type == "int":
-        n = __make_int(min_value, max_value)
+        n = __create_int(min_value, max_value)
     elif value_type == "float":
-        n = __make_float(min_value, max_value)
+        n = __create_float(min_value, max_value)
     elif value_type == "str":
-        n = "".join(__make_str(min_value, max_value))
+        n = "".join(__create_str(min_value, max_value))
     else:
         print("Type Unknown")
         return
@@ -72,7 +72,7 @@ def one_dimensional_list(
     max_value: int = 30,
     value_type: str = "int",
     write_to_file: bool = True,
-):
+) :
     """一次元リストを出力する
 
     出力形式
@@ -94,15 +94,15 @@ def one_dimensional_list(
     """
     if value_type == "int":
         length = random.randint(min_len, max_len)
-        lis = [__make_int(min_value, max_value) for _ in range(length)]
+        lis = [__create_int(min_value, max_value) for _ in range(length)]
 
     elif value_type == "float":
         length = random.randint(min_len, max_len)
-        lis = [__make_float(min_value, max_value) for _ in range(length)]
+        lis = [__create_float(min_value, max_value) for _ in range(length)]
 
     elif value_type == "str":
         length = random.randint(min_len, max_len)
-        lis = ["".join(__make_str(min_value, max_value)) for _ in range(length)]
+        lis = ["".join(__create_str(min_value, max_value)) for _ in range(length)]
 
     else:
         print("Type Unknown")
@@ -158,14 +158,14 @@ def two_dimensional_list(
     w = random.randint(min_w, max_w)
 
     if value_type == "int":
-        a = [[__make_int(min_value, max_value) for _ in range(w)] for _ in range(h)]
+        a = [[__create_int(min_value, max_value) for _ in range(w)] for _ in range(h)]
 
     elif value_type == "float":
-        a = [[__make_float(min_value, max_value) for _ in range(w)] for _ in range(h)]
+        a = [[__create_float(min_value, max_value) for _ in range(w)] for _ in range(h)]
 
     elif value_type == "str":
         a = [
-            ["".join(__make_str(min_value, max_value)) for _ in range(w)]
+            ["".join(__create_str(min_value, max_value)) for _ in range(w)]
             for _ in range(h)
         ]
 
