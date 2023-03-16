@@ -34,14 +34,10 @@ def one_value(
     value_type: str = "int",
     write_to_file: bool = True,
 ):
-    """値Nをランダムで一つ出力する
-
+    """
     出力形式
 
     N
-
-    生成した値はコンソールへ出力し、
-    write_to_file=Trueの場合、同時にinput.txtも上書きする
 
     Args:
         min_value (int, optional): 要素の値の最小値(value_type="str"の場合は文字数). Defaults to 1.
@@ -65,16 +61,12 @@ def one_dimensional_list(
     value_type: str = "int",
     write_to_file: bool = True,
 ):
-    """一次元リストを出力する
-
+    """
     出力形式
 
     N
 
     a_1 , a_2 , ... , a_n
-
-    生成した値はコンソールへ出力し、
-    write_to_file=Trueの場合、同時にinput.txtも上書きする
 
     Args:
         min_len (int, optional): リストの長さの最小値 Defaults to 1.
@@ -107,8 +99,7 @@ def two_dimensional_list(
     value_type: str = "int",
     write_to_file: bool = True,
 ):
-    """二次元リストを出力する
-
+    """
     出力形式
 
     H W
@@ -118,10 +109,6 @@ def two_dimensional_list(
     A_i,1 , A_i,2 , ... , A_i,W
 
     A_H,1 , A_H,2 , ... , A_H,W
-
-    生成した値はコンソールへ出力し、
-    write_to_file=Trueの場合、同時にinput.txtも上書きする
-
 
     Args:
         min_h (int, optional): リストの行(縦)の最小値 Defaults to 1.
