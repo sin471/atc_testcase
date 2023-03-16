@@ -15,27 +15,15 @@ import string
 PATH = ".\\input.txt"
 
 
-def __create_int(min_value: int, max_value: int):
-    return random.randint(min_value, max_value)
-
-
-def __create_float(min_value: int, max_value: int):
-    return round(random.uniform(min_value, max_value), 3)
-
-
-def __create_str(min_len: int, max_len: int):
-    str_len = random.randint(min_len, max_len)
-    str_list = random.choices(string.ascii_lowercase, k=str_len)
-    return "".join(str_list)
-
-
 def __create_value(min_: int, max_: int, type_: str):
     if type_ == "int":
-        return __create_int(min_, max_)
+        return random.randint(min_, max_)
     elif type_ == "float":
-        return __create_float(min_, max_)
+        return round(random.uniform(min_, max_), 3)
     elif type_ == "str":
-        return __create_str(min_, max_)
+        str_len = random.randint(min_, max_)
+        chars = random.choices(string.ascii_lowercase, k=str_len)
+        return "".join(chars)
     else:
         raise TypeError("invalid type")
 
