@@ -29,6 +29,17 @@ def __create_str(min_len: int, max_len: int):
     return "".join(str_list)
 
 
+def __create_value(min_: int, max_: int, type_: str):
+    if type_ == "int":
+        return __create_int(min_, max_)
+    elif type_ == "float":
+        return __create_float(min_, max_)
+    elif type_ == "str":
+        return __create_str(min_, max_)
+    else:
+        raise TypeError("invalid type")
+
+
 def one_value(
     min_value: int = 1,
     max_value: int = 15,
@@ -50,16 +61,7 @@ def one_value(
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
-    if value_type == "int":
-        n = __create_int(min_value, max_value)
-    elif value_type == "float":
-        n = __create_float(min_value, max_value)
-    elif value_type == "str":
-        n = __create_str(min_value, max_value)
-    else:
-        print("Type Unknown")
-        return
-
+    n = __create_value(min_value, max_value, value_type)
     if write_to_file:
         with open(PATH, mode="w") as f:
             f.write(str(n))
@@ -95,16 +97,7 @@ def one_dimensional_list(
     """
     length = random.randint(min_len, max_len)
 
-    if value_type == "int":
-        lis = [__create_int(min_value, max_value) for _ in range(length)]
-    elif value_type == "float":
-        lis = [__create_float(min_value, max_value) for _ in range(length)]
-    elif value_type == "str":
-        lis = [__create_str(min_value, max_value) for _ in range(length)]
-
-    else:
-        print("Type Unknown")
-        return
+    lis = [__create_value(min_value, max_value, value_type) for _ in range(length)]
 
     if write_to_file:
         with open(PATH, mode="w") as f:
@@ -155,21 +148,10 @@ def two_dimensional_list(
     h = random.randint(min_h, max_h)
     w = random.randint(min_w, max_w)
 
-    if value_type == "int":
-        a = [[__create_int(min_value, max_value) for _ in range(w)] for _ in range(h)]
-
-    elif value_type == "float":
-        a = [[__create_float(min_value, max_value) for _ in range(w)] for _ in range(h)]
-
-    elif value_type == "str":
-        a = [
-            [__create_str(min_value, max_value) for _ in range(w)]
-            for _ in range(h)
-        ]
-
-    else:
-        print("Type Unknown")
-        return
+    a = [
+        [__create_value(min_value, max_value, value_type) for _ in range(w)]
+        for _ in range(h)
+    ]
 
     if write_to_file:
         with open(PATH, mode="w") as f:
