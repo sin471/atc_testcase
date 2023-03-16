@@ -25,7 +25,8 @@ def __create_float(min_value: int, max_value: int):
 
 def __create_str(min_len: int, max_len: int):
     str_len = random.randint(min_len, max_len)
-    return random.choices(string.ascii_lowercase, k=str_len)
+    str_list = random.choices(string.ascii_lowercase, k=str_len)
+    return "".join(str_list)
 
 
 def one_value(
@@ -54,7 +55,7 @@ def one_value(
     elif value_type == "float":
         n = __create_float(min_value, max_value)
     elif value_type == "str":
-        n = "".join(__create_str(min_value, max_value))
+        n = __create_str(min_value, max_value)
     else:
         print("Type Unknown")
         return
@@ -72,7 +73,7 @@ def one_dimensional_list(
     max_value: int = 30,
     value_type: str = "int",
     write_to_file: bool = True,
-) :
+):
     """一次元リストを出力する
 
     出力形式
@@ -93,13 +94,13 @@ def one_dimensional_list(
         write_to_file (bool, optional):ファイルにも出力するか Defaults to True.
     """
     length = random.randint(min_len, max_len)
-    
+
     if value_type == "int":
         lis = [__create_int(min_value, max_value) for _ in range(length)]
     elif value_type == "float":
         lis = [__create_float(min_value, max_value) for _ in range(length)]
     elif value_type == "str":
-        lis = ["".join(__create_str(min_value, max_value)) for _ in range(length)]
+        lis = [__create_str(min_value, max_value) for _ in range(length)]
 
     else:
         print("Type Unknown")
@@ -162,7 +163,7 @@ def two_dimensional_list(
 
     elif value_type == "str":
         a = [
-            ["".join(__create_str(min_value, max_value)) for _ in range(w)]
+            [__create_str(min_value, max_value) for _ in range(w)]
             for _ in range(h)
         ]
 
