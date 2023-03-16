@@ -45,12 +45,12 @@ def one_value(
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional): ファイルにも出力するか Defaults to True.
     """
-    n = __create_value(min_value, max_value, value_type)
+    value = __create_value(min_value, max_value, value_type)
     if write_to_file:
         with open(PATH, mode="w") as f:
-            f.write(str(n))
+            f.write(str(value))
 
-    return n
+    return value
 
 
 def one_dimensional_list(
@@ -76,17 +76,17 @@ def one_dimensional_list(
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional):ファイルにも出力するか Defaults to True.
     """
-    length = random.randint(min_len, max_len)
+    n = random.randint(min_len, max_len)
 
-    lis = [__create_value(min_value, max_value, value_type) for _ in range(length)]
+    a = [__create_value(min_value, max_value, value_type) for _ in range(n)]
 
     if write_to_file:
         with open(PATH, mode="w") as f:
-            f.write(str(length) + "\n")
+            f.write(str(n) + "\n")
         with open(PATH, mode="a") as f:
-            f.write(" ".join(map(str, lis)))
+            f.write(" ".join(map(str, a)))
 
-    return length, lis
+    return n, a
 
 
 def two_dimensional_list(
