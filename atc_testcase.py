@@ -92,16 +92,13 @@ def one_dimensional_list(
         value_type (str, optional): 要素の型 Defaults to "int".
         write_to_file (bool, optional):ファイルにも出力するか Defaults to True.
     """
+    length = random.randint(min_len, max_len)
+    
     if value_type == "int":
-        length = random.randint(min_len, max_len)
         lis = [__create_int(min_value, max_value) for _ in range(length)]
-
     elif value_type == "float":
-        length = random.randint(min_len, max_len)
         lis = [__create_float(min_value, max_value) for _ in range(length)]
-
     elif value_type == "str":
-        length = random.randint(min_len, max_len)
         lis = ["".join(__create_str(min_value, max_value)) for _ in range(length)]
 
     else:
