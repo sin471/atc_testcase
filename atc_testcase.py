@@ -53,7 +53,8 @@ def one_value(
     if write_to_file:
         with open(PATH, mode="w") as f:
             f.write(str(n))
-    print(n)
+
+    return n
 
 
 def one_dimensional_list(
@@ -93,8 +94,7 @@ def one_dimensional_list(
         with open(PATH, mode="a") as f:
             f.write(" ".join(map(str, lis)))
 
-    print(length)
-    print(*lis)
+    return length, lis
 
 
 def two_dimensional_list(
@@ -149,6 +149,4 @@ def two_dimensional_list(
                 f.write("\n")
                 f.write(" ".join(map(str, a[i])))
 
-    print(h, w)
-    for i in a:
-        print(*i)
+    return h, w, a
